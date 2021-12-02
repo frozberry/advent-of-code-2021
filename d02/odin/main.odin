@@ -16,7 +16,7 @@ part1 :: proc(file_name: string) {
 	lines := get_input(file_name)
 
 	hor := 0
-	depth := 0
+	vert := 0
 
 	for line in lines {
 		command := strings.split(line, " ")
@@ -27,22 +27,21 @@ part1 :: proc(file_name: string) {
 			hor += num
 		}
 		if instruction == "down" {
-			depth += num
+			vert += num
 		}
 		if instruction == "up" {
-			depth -= num
+			vert -= num
 		}
-
 	}
 
-	fmt.println("Part 1: ", hor * depth)
+	fmt.println("Part 1: ", hor * vert)
 }
 
 part2 :: proc(file_name: string) {
 	lines := get_input(file_name)
 
 	hor := 0
-	depth := 0
+	vert := 0
 	aim := 0
 
 	for line in lines {
@@ -52,7 +51,7 @@ part2 :: proc(file_name: string) {
 
 		if instruction == "forward" {
 			hor += num
-			depth += aim * num
+			vert += aim * num
 		}
 		if instruction == "down" {
 			aim += num
@@ -62,7 +61,7 @@ part2 :: proc(file_name: string) {
 		}
 	}
 
-	fmt.println("Part 2: ", hor * depth)
+	fmt.println("Part 2: ", hor * vert)
 }
 
 get_input :: proc(file_name: string) -> []string {
